@@ -2,18 +2,28 @@ package com.entity;
 
 public class Toy {
 
+	private int id;
 	private String title;
 	private double price;
 	private Size size;
 	private Gender gender;
 	private Color color;
 
-	public Toy(String title, double price, Size size, Gender gender, Color color) {
+	public Toy(int id, String title, double price, Size size, Gender gender, Color color) {
+		this.id = id;
 		this.title = title;
 		this.price = price;
 		this.size = size;
 		this.gender = gender;
 		this.color = color;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -54,6 +64,12 @@ public class Toy {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	@Override
+	public String toString() {
+		return "Toy [id=" + id + ", title=" + title + ", price=" + price + ", size=" + size + ", gender=" + gender
+				+ ", color=" + color + "]";
 	}
 
 }
