@@ -1,9 +1,12 @@
 package com.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.entity.Color;
 import com.entity.Gender;
+import com.entity.Room;
 import com.entity.Size;
 import com.entity.Toy;
 
@@ -42,4 +45,13 @@ public class ToysRepository {
 		return toys.get(title);
 	}
 
+	public List<Toy> getToys(Room room, Color color){
+		List<Toy> toys = new ArrayList<>();
+		room.getToys()
+			.stream()
+			.filter(n -> n.getColor() == color)
+			.forEach(n -> toys.add(n));
+		return toys;
+	}
+	
 }

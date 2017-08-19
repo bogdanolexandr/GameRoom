@@ -25,7 +25,7 @@
 				<th>Gender</th>
 				<th>Price</th>
 				<th>Size</th>
-			<tr />
+			</tr>
 			<tr>
 				<c:forEach items="${room.toys}" var="item">
 					<tr>
@@ -39,6 +39,17 @@
 			</tr>
 		</table>
 		<br>
+		
+		<form action="../findtoys" method="get">
+			<input type="hidden" value="${room.id}" name="roomid" />
+			
+			<label>find all toys which color is </label><br>
+			<c:forEach items="${colors}" var="item">
+				<label>"${item}"</label><input type="radio" name="color" value="${item}" />
+			</c:forEach>
+			<input type="submit" value="find">
+		</form>
+		
 	</div>
 </body>
 </html>

@@ -17,6 +17,6 @@ public interface GameRoomService {
 
 	public List<Room> getAllRooms();
 
-	public List<Toy> findToys(int roomId, Color color);
+	public List<Toy> findToys(int roomId, Color color, String orderBy);
 
 }

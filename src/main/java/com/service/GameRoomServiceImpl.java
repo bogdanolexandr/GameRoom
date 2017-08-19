@@ -1,17 +1,18 @@
 package com.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.entity.Color;
 import com.entity.Gender;
 import com.entity.Room;
 import com.entity.Toy;
 import com.repository.RoomRepository;
+import com.repository.ToysRepository;
 import com.util.Sorter;
 
 public class GameRoomServiceImpl implements GameRoomService {
 
 	private RoomRepository roomRepo = new RoomRepository();
+	private ToysRepository toysRepo = new ToysRepository();
 	
 	@Override
 	public Room getRoom(int id) {
@@ -37,13 +38,14 @@ public class GameRoomServiceImpl implements GameRoomService {
 	}
 
 	@Override
-	public List<Toy> findToys(int roomId, Color color) {
+	public List<Toy> findToys(int roomId, Color color, String orderBy) {
 		Room room = roomRepo.getRoom(roomId);
-		List<Toy> toys = new ArrayList<>();
-		room.getToys()
-			.stream()
-			.filter(n -> n.getColor() == color)
-			.forEach(n -> toys.add(n));
+		List<Toy> toys = toysRepo.getToys(room, color);
+		Sorter.sort(toys, orderBy);
+//		room.getToys()
+//			.stream()
+//			.filter(n -> n.getColor() == color)
+//			.forEach(n -> toys.add(n));
 		return toys;
 	}
 

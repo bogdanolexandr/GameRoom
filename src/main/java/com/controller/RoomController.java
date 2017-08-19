@@ -37,6 +37,7 @@ public class RoomController extends HttpServlet {
 		} else {
 			view = "find.jsp";
 		}
+		
 		request.getRequestDispatcher(view).forward(request, response);
 	}
 
